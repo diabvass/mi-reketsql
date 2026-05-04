@@ -1,0 +1,57 @@
+.test .form {
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.test .point {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.CodeMirror {
+    height: 250px !important;
+    font-size: 16px;
+    background: #fdfdfd !important;
+}
+
+.test .round1 {
+    flex: 1;
+    min-width: 300px;
+}
+
+.test .round2 {
+    flex: 2;
+    border-left: 1px solid #eee;
+}
+
+.test .structure u {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Style des résultats */
+.resTab .header {
+    padding: 10px;
+    background: #f8f9fa;
+    border-bottom: 2px solid #28a745;
+}
+
+.Nbligne {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+@media (max-width: 992px) {
+    .test .cadre {
+        flex-direction: column-reverse;
+    }
+
+    .test .round2 {
+        border-left: none;
+        border-top: 1px solid #eee;
+    }
+}

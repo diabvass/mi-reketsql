@@ -1,0 +1,55 @@
+.logForm,
+.sigForm {
+    width: 600px;
+}
+
+#loginForm,
+#signForm {
+    align-items: center;
+    width: 500px;
+}
+
+#loginForm .btn,
+#signForm .btn {
+    font-weight: 700;
+    background-color: var(--accent);
+    border: none;
+    color: var(--bg);
+    display: inline-block;
+    border-radius: 18px 14px 20px;
+    transition: all 0.2s;
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+}
+
+#loginForm .form-control:focus,
+#signForm .form-control:focus {
+    box-shadow: 0 0 0 0.05rem var(--accent);
+}
+
+.logHaut {
+    color: var(--accent);
+    font-size: 22px;
+}
+
+@media (max-width: 992px) {
+    #loginForm {
+        align-items: center;
+        width: 300px;
+    }
+
+    .logForm {
+        width: 400px;
+    }
+
+    #signForm {
+        align-items: center;
+        width: 300px;
+    }
+
+    .sigForm {
+        width: 400px;
+    }
+}

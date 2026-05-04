@@ -1,0 +1,72 @@
+.hero {
+    background-color: var(--bg);
+    animation: fadeIn 0.6s ease-out;
+}
+
+.description-box {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Titre principal */
+.hero .nom {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text-h);
+    letter-spacing: -1px;
+    margin-bottom: 0;
+}
+
+.hero .nom span {
+    color: var(--accent);
+}
+
+/* Texte de description */
+.content-text {
+    line-height: 1.6;
+}
+
+.main-text {
+    font-size: 1.25rem;
+    color: var(--text-h);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.sub-text {
+    font-size: 1rem;
+    color: var(--text);
+    opacity: 0.85;
+}
+
+.sub-text .accent {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.separator {
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent);
+    border: none;
+    border-radius: 2px;
+    margin-top: 30px;
+    opacity: 1;
+}
+
+/* --- RESPONSIVITÉ PRO --- */
+@media (max-width: 768px) {
+    .hero .nom {
+        font-size: 2rem;
+    }
+    
+    .main-text {
+        font-size: 1.1rem;
+        padding: 0 15px;
+    }
+
+    .sub-text {
+        font-size: 0.95rem;
+    }
+}

@@ -1,0 +1,92 @@
+.navbar {
+    background-color: rgba(254, 254, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(3, 16, 133, 0.1) !important;
+    padding: 18px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+
+    transition: var(--transition);
+}
+
+.nomApp {
+    font-size: 1.4rem;
+    color: var(--text-h) !important;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+}
+
+.nomApp i {
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
+.nomApp span {
+    color: var(--accent);
+    position: relative;
+}
+
+.navbar a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 4px 0;
+    display: inline-block;
+    position: relative;
+    transition: var(--transition);
+    opacity: 0.8;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+    opacity: 1;
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--card-hover);
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(3, 16, 133, 0.05);
+}
+
+.status-badge .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #28a745;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+}
+
+.nomApp:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    .navbar a:hover {
+        transform: none;
+    }
+}
