@@ -10,7 +10,7 @@ try {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['query'])) {
         $query = trim($_POST['query']);
-        
+
         // en majuscule
         $queryMajuscule = strtoupper(preg_replace('/\s+/', ' ', $query));
 
@@ -27,6 +27,7 @@ try {
             "statut" => "success",
             "html" => ResultatTab($result)
         ]);
+        historique($pdo,$query,true);
 
     } else {
         echo json_encode(["statut" => "error", "data" => "Requête invalide ou vide."]);
@@ -44,13 +45,35 @@ try {
     } elseif (str_contains($e->getMessage(), 'SQLSTATE[42000]')) {
         $messagePublic = "Erreur de syntaxe dans votre requête SQL.";
     }
-
+    historique($pdo,$query,false,$messagePublic);
     echo json_encode([
-        "statut" => "error", 
-        "data" => $messagePublic 
+        "statut" => "error",
+        "data" => $messagePublic
     ]);
+
 
 } catch (Exception $e) {
     error_log("Erreur Système : " . $e->getMessage());
     echo json_encode(["statut" => "error", "data" => "Erreur interne du serveur."]);
+}
+
+function historique($pdo,$query,$statut,$detail = null)
+{
+
+    try {
+        $ip_address = $_SERVER['REMOTE_ADDR'] ?? "0.0.0.0";
+
+        $sql = "INSERT INTO requete (ip_address,contenu,statut,detail) VALUES (:ip, :contenu, :statut, :detail)";
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->execute([
+            'ip' => $ip_address,
+            'contenu' => $query,
+            'statut' => $statut,
+            'detail' => $detail
+        ]);
+
+    } catch (\PDOException $e) {
+        error_log("Erreur d'insertion visite : " . $e->getMessage());
+    }
 }
