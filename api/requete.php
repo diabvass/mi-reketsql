@@ -61,16 +61,17 @@ function historique($pdo,$query,$statut,$detail = null)
 {
 
     try {
-        $ip_address = $_SERVER['REMOTE_ADDR'] ?? "0.0.0.0";
-
-        $sql = "INSERT INTO requete (ip_address,contenu,statut,detail) VALUES (:ip, :contenu, :statut, :detail)";
+        $adresseIP = $_SERVER['REMOTE_ADDR'] ?? "0.0.0.0";
+		$reqDate = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO requete (adresseIP,contenu,statut,detailError,requeteDate) VALUES (:ip, :contenu, :statut, :detail, :reqDate)";
         $stmt = $pdo->prepare($sql);
 
         $stmt->execute([
-            'ip' => $ip_address,
+            'ip' => $adresseIP,
             'contenu' => $query,
             'statut' => $statut,
-            'detail' => $detail
+            'detail' => $detail,
+            'reqDate' => $reqDate
         ]);
 
     } catch (\PDOException $e) {
