@@ -22,9 +22,13 @@ try {
 } catch (\PDOException $e) {
     error_log("Erreur d'insertion visite : " . $e->getMessage());
 }
-function DetectePays($adresseIP){
+function DetectePays($adresseIP) {
     $url = 'https://api.iplocation.net/?ip=' . urlencode($adresseIP);
-    $json = file_get_contents($url);
-    $data = json_decode($json, true);
-    return $data ?? [];
-}   
+    // timeout de 2 secondes
+    $ctx = stream_context_create(['http' => ['timeout' => 2]]);
+    $json = @file_get_contents($url, false, $ctx);
+    
+    if ($json === FALSE) return [];
+    
+    return json_decode($json, true) ?? [];
+}
